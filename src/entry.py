@@ -16,7 +16,7 @@ gemini = Gemini()
 
 chunkLen = 1985
 
-@bot.command(name="ask",help="Talk to the bot")
+@bot.command(name="ask",help="Chat without context")
 async def query(ctx, *, arg):
     
   messageObj = ctx.message
