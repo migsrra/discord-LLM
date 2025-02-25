@@ -18,10 +18,11 @@ chunkLen = 1985
 
 @bot.command(name="ask",help="Talk to the bot")
 async def query(ctx, *, arg):
+    
   messageObj = ctx.message
-  await messageObj.add_reaction('\N{THUMBS UP SIGN}')  
-  response = gemini.query_gemini(arg)
+  await messageObj.add_reaction('\N{THUMBS UP SIGN}')
   
+  response = gemini.query_gemini(arg)
   if len(response) >= chunkLen:
     response_chunks = [response[i: i + chunkLen] for i in range(0, len(response), chunkLen)]
     for i, chunk in enumerate(response_chunks):
@@ -34,10 +35,11 @@ async def query(ctx, *, arg):
   
 @bot.command(name="chat", help="Chat with context")
 async def query_with_context(ctx, *, arg):
+    
   messageObj = ctx.message
   await messageObj.add_reaction('\N{THUMBS UP SIGN}')
+  
   response = gemini.chat_with_context(arg)
-
   if len(response) >= chunkLen:
     response_chunks = [response[i: i + chunkLen] for i in range(0, len(response), chunkLen)]
     for i, chunk in enumerate(response_chunks):
